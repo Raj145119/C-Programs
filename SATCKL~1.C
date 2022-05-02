@@ -1,0 +1,77 @@
+#include<stdio.h>
+#include<conio.h>
+#include<malloc.h>
+struct node
+{
+    int data;
+    struct node *next;
+};
+struct node *top=NULL;
+void push(int item)
+{
+    struct node *p,*q;
+    p=(struct node *)malloc(sizeof(struct node));
+    p->data=item;
+    if(top==NULL)
+    {
+	p->next=NULL;
+	top=p;
+    }
+    else
+    {
+	p->next=top;
+	top=p;
+    }
+}
+int pop()
+{
+    int x;
+    struct node *p;
+    p=top;
+    if(p==NULL)
+    {
+	printf("stact is not created\n");
+	return 0;
+    }
+    x=p->data;
+    top=p->next;
+    free(p);
+    return x;
+}
+void display()
+{
+    struct node *p;
+    p=top;
+    if(p==NULL)
+    {       x
+	printf("stack is not created\n");
+    }
+    printf("\ndata=%d",p->data);
+    while(p->next!=NULL)
+    {
+	    printf("\ndata=%d",p->next->data);
+	    p=p->next;
+    }
+}
+void main()
+{
+    int d;
+    printf("\nEnter the data\n");
+    scanf("%d",&d);
+    push(d);
+    printf("Enter the data\n");
+    scanf("%d",&d);
+    push(d);
+    printf("Enter the data\n");
+    scanf("%d",&d);
+    push(d);
+    d=pop();
+    printf("\npop data is =%d",d);
+    display();
+    printf("\nEnter the data\n");
+    scanf("%d",&d);
+    push(d);
+    display();
+    getch();
+}
+

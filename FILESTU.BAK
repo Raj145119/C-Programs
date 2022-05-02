@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<conio.h>
+#include<process.h>
+struct student
+{
+	int roll;
+	char name[20];
+	float sallary;
+};
+void main()
+{
+	struct student s1;
+	int n,i=0;
+	FILE *fp;
+	clrscr();
+	fp=fopen("student.txt","a");
+	printf("Enter no. of student:");
+	scanf("%d",&n);
+       //	while(i<n)
+       //	{
+	printf("\nEnter the Roll No.:");
+	scanf("%d",&s1.roll);
+	printf("\nEnter the Name:");
+	scanf("%s",s1.name);
+	printf("Enter the sallary:");
+	scanf("%f",&s1.sallary);
+	fprintf(fp,"\n%d\t",s1.roll);
+	fprintf(fp,"%s\t",s1.name);
+	fprintf(fp,"%f",s1.sallary);
+       //	i++;
+      //	}
+	fclose(fp);
+	getch();
+}

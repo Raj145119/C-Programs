@@ -1,0 +1,15 @@
+rollno	name	sallary
+1	aditya	134.000000
+2	praveen	234.000000
+3	raju	345.559998
+4	ram	0.000000
+5	sushil	0.000000
+6	prasant	0.000000
+7	jitesh	0.000000
+9	bhusan	0.000000
+89	adasf	0.000000
+2	sdf	1000.000000
+5	praven	1000.000000
+34	asdf	45.000000
+56	dfgsd	5567.000000
+35	qwe	45.000000

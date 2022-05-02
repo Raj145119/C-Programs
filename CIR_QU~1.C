@@ -1,0 +1,92 @@
+#include<stdio.h>
+#include<conio.h>
+#include<malloc.h>
+struct node
+{
+  int data;
+  struct node *next;
+};
+struct node *f,*r;
+void enqueue(int item)
+{
+    struct node *temp,*p;
+    temp=(struct node *)malloc(sizeof(struct node));
+    temp->data=item;
+    if(f==NULL)
+    {
+	temp->next=temp;
+	f=r=temp;
+    }
+    else
+    {
+	r->next=temp;
+	r=r->next;
+	r->next=f;
+    }
+}
+void display()
+{
+    struct node *p;
+    if(f==NULL)
+    {
+	printf("queue is empty\n");
+	return;
+    }
+    else
+    {
+	p=f;
+	printf("\ndata=%d",p->data);
+	while(p->next!=f)
+	{
+	    printf("\ndata=%d",p->next->data);
+	    p=p->next;
+	}
+    }
+}
+int dequeue()
+{
+    int d;
+    if(f==NULL)
+    {
+	printf("Queue is empty\n");
+	return 0;
+    }
+    else{
+	d=f->data;
+	if(f->next==f)
+	{
+	    r=f=NULL;
+	}
+	else
+	    f=f->next;
+	    r->next=f;
+	return d;
+    }
+
+}
+void main()
+{
+    int d;
+    clrscr();
+    r=f=NULL;
+    printf("\nEnter the data\n");
+    scanf("%d",&d);
+    enqueue(d);
+    printf("Enter the data\n");
+    scanf("%d",&d);
+    enqueue(d);
+    printf("Enter the data\n");
+    scanf("%d",&d);
+    enqueue(d);
+    d=dequeue();
+    printf("\npop data is =%d",d);
+    display();
+    printf("\nEnter the data\n");
+    scanf("%d",&d);
+    enqueue(d);
+    display();
+    getch();
+}
+
+
+

@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<conio.h>
+#include<malloc.h>
+struct node
+{
+	int data;
+	struct node *next;
+}*r;
+void fun(struct node *q)
+{
+	if(q==NULL)
+	return;
+	printf("%d",q->data);
+	if(q->next!=NULL)
+	fun(q->next->next);
+	printf("%d",q->data);
+}
+void createlist(int item)
+{
+	struct node *p,*s;
+	p=(struct node*)malloc(sizeof(struct node));
+	p->data=item;
+	p->next=NULL;
+
+	if(r==NULL)
+	{
+	     r=p;
+	     return;
+	}
+	s=r;
+	while(s->next!=NULL)
+	{
+		s=s->next;
+
+	}
+	s->next=p;
+
+
+}
+void main()
+{
+	int x;
+	//struct node *q;
+	r=NULL;
+	createlist(5);
+	createlist(6);
+	createlist(8);
+	createlist(10);
+	createlist(15);
+	createlist(20);
+	fun(r);
+}

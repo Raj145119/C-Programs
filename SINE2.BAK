@@ -1,0 +1,23 @@
+#include<stdio.h>
+#include<conio.h>
+#include<math.h>
+void main()
+{
+	float i=1,j,n,x,k=2,sum=0.0;
+	clrscr();
+	printf("Enter the no.");
+	scanf("%f",&n);
+	printf("\nEnter the value of x");
+	scanf("%f",&x);
+	j=x;
+	while(i<=n)
+	{
+	 sum=sum+j;
+	  j=(j*(x*x))/((k)*(k+1));
+	  k=k+2;
+	  i++;
+	}
+	printf("%f",sum);
+	getch();
+}
+

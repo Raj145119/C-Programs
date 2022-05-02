@@ -1,0 +1,159 @@
+#include<stdio.h>
+
+struct graph
+{
+	int key;
+	int parent;
+	int hi;
+	int flag;
+};
+struct graph g[100];
+
+int v,e;
+int heapsize = 0;
+int a[100];
+int adj[100][100]={0};
+int wt[100][100]={0};
+
+void min_heapify(int a[],int i)
+{
+	int left,right,smallest,temp;
+	left = 2*i;
+	right = 2*i+1;
+	if(left <=heapsize && a[left] < a[i])
+	{
+		smallest = left;
+	}
+	else
+	{
+		smallest = i;
+	}
+	if(right <= heapsize && a[right] < a[smallest])
+	{
+		smallest = right;
+	}
+	if(smallest != i)
+	{
+		temp = a[i];
+		a[i] = a[smallest];
+		a[smallest] = temp;
+
+		min_heapify(a,smallest);
+	}
+}
+
+int extract_minimum(int a[])
+{
+	int min;
+	if(heapsize < 1)
+	{
+		printf("heap underflow:");
+	}
+	else
+	{
+	min = a[1];
+	a[1] = a[heapsize];
+	heapsize = heapsize-1;
+	min_heapify(a,1);
+
+   }
+	return min;
+}
+
+void discrease_key(int a[],int i,int key)
+{
+	int temp;
+	if(key > a[i])
+	{
+		printf("new key is smaller than current key:");
+	}
+	else
+	a[i] = key;
+	while(i > 1 && a[i/2] > a[i])
+	{
+	   temp = a[i/2];
+	   a[i/2] = a[i];
+	   a[i] = temp;
+	   i = i/2;
+	}
+}
+
+void insert(int a[],int key)
+{
+	heapsize = heapsize+1;
+	a[heapsize] = 10000000;
+	discrease_key(a,heapsize,key);
+}
+
+
+void prim(int r)
+{
+	int i,temp,u;
+	for(i=0;i<v;i++)
+	{
+		g[i].key=10000;
+		g[i].parent=-1;
+		g[i].flag=0;
+	}
+	g[r].key=0;
+
+	insert(a,g[r].key);
+	while(heapsize>=1)
+	{
+		temp=extract_minimum(a);
+
+		for(i=1;i<=v;i++)
+		{
+
+			if(g[i].key==temp && g[i].flag==0)
+			{
+				u=i;
+				g[u].flag=1;
+			}
+		}
+
+		for(i=1;i<=v;i++)
+		{
+			if(adj[u][i]==1)
+			{
+				if(g[i].flag==0 && wt[u][i]<g[i].key)
+				{
+					g[i].parent=u;
+					g[i].key=wt[u][i];
+					insert(a,g[i].key);
+				}
+			}
+		}
+	}
+}
+
+void main()
+{
+	int i,v1,v2,w;
+	FILE *fp;
+	fp=fopen("graph.txt","r");
+	if(fp==NULL)
+	{
+		printf("file not found");
+	}
+	else
+	{
+		fscanf(fp,"%d%d",&v,&e);
+	    for(i=1;i<=e;i++)
+	    {
+			fscanf(fp,"%d%d%d",&v1,&v2,&w);
+			adj[v1][v2]=1;
+			adj[v2][v1]=1;
+			wt[v1][v2]=w;
+			wt[v2][v1]=w;
+		}
+	}
+	heapsize=v;
+	prim(1);
+
+	for(i=1;i<=v;i++)
+	{
+		printf("%d ",g[i].key);
+	}
+	printf("\n%d",g[8].parent);
+}

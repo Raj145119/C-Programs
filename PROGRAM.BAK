@@ -1,0 +1,15 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	char x[7]={'p','r','o','g','r','a','m'};
+	int i,j,k;
+	clrscr();
+	for(i=0;i<7;i++)
+	{	for(j=0;j<=i;j++)
+		printf(" %c",x[j]);
+		printf("\n");
+	}
+	getch();
+
+}

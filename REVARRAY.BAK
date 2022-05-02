@@ -1,0 +1,52 @@
+		/*ARRAY REVERSE*/
+
+#include<iostream.h>
+#include<conio.h>
+class rev
+{
+	public:
+	int arr[10],i,j,n;
+
+};
+class B
+{
+	public:
+	rev reverse(int);
+};
+rev B::reverse(int n)
+{
+	rev a;
+	a.j=a.n-1;
+	int t;
+	cout<<"Enter the value in array\n";
+	cin>>a.n;
+	for(a.i=0;a.i<a.n;a.i++)
+	{
+		cout<<"Enter" << a.i+1 <<"Data\n";
+		cin>>a.arr[a.i];
+
+	}
+
+	for(a.i=0;a.i<a.n/2;a.i++)
+	{
+		t=a.arr[a.i];
+		a.arr[a.i]=a.arr[a.j];
+		a.arr[a.j]=t;
+		a.j--;
+	}
+	return a;
+}
+void main()
+{
+	rev A;
+	B b;
+	int i;
+	clrscr();
+	A=b.reverse(A.n);
+	for(i=0;i<A.n;i++)
+	{
+		cout<<A.arr[i]<<endl;
+	}
+	getch();
+
+}

@@ -1,0 +1,11 @@
+#include <stdio.h>
+#include<conio.h>
+#include <math.h>
+
+void main()
+{
+  int number = -1234;
+
+  printf("number: %d  absolute value: %d\n", number, abs(number));
+  getch();
+}

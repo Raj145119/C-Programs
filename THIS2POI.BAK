@@ -1,0 +1,41 @@
+#include<conio.h>
+#include<iostream.h>
+class person
+{
+	char name[10];
+	int age;
+	public:
+	void getdata()
+	{
+		cout<<"Enter the name"<<endl;
+		cin>>name;
+		cout<<"Enter the age\n";
+		cin>>age;
+	}
+	void setdata(int age)
+	{
+		this->age=age;
+	}
+	int returnage(int age)
+	{
+		this->age=age;
+		return this->age;
+	}
+	void display()
+	{
+		cout<<"NAME="<<name<<endl;
+		cout<<"AGE="<<age<<endl;
+	}
+};
+void main()
+{
+	clrscr();
+	person p1;
+	p1.getdata();
+	p1.display();
+	p1.setdata(20);
+	p1.display();
+	int myage=p1.returnage(45);
+	cout<<"MY AGE="<<myage;
+	getch();
+}

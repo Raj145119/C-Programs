@@ -1,0 +1,89 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int a,b,c,d,e,f;
+	clrscr();
+	printf("Enter the no. Between 1 to 4000\n");
+	scanf("%d",&a);
+	if(a==0&&a>4000)
+	{
+		printf("Invalid no.\n");
+	}
+	else
+	roman(a);
+	getch();
+}
+void roman(int a)
+{
+	int t,h,d,u,c,e;
+	t=a/1000;
+	c=a%1000;
+	h=c/100;
+	e=c%100;
+	d=e/10;
+	u=e%10;
+	if(t==1)
+	printf("M");
+	if(t==2)
+	printf("MM");
+	if(t==3)
+	printf("MMM");
+	if(t==4)
+	printf("MMMM");
+	if(h==1)
+	printf("C");
+	if(h==2)
+	printf("CC");
+	if(h==3)
+	printf("CCC");
+	if(h==4)
+	printf("CD");
+	if(h==5)
+	printf("D");
+	if(h==6)
+	printf("DC");
+	if(h==7)
+	printf("DCC");
+	if(h==8)
+	printf("DCCC");
+	if(h==9)
+	printf("CM");
+	if(d==1)
+	printf("X");
+	if(d==2)
+	printf("XX");
+	if(d==3)
+	printf("XXX");
+	if(d==4)
+	printf("XL");
+	if(d==5)
+	printf("L");
+	if(d==6)
+	printf("XL");
+	if(d==7)
+	printf("XLL");
+	if(d==8)
+	printf("XLLL");
+	if(d==9)
+	printf("XC");
+	if(u==1)
+	printf("I");
+	if(u==2)
+	printf("II");
+	if(u==3)
+	printf("III");
+	if(u==4)
+	printf("IV");
+	if(u==5)
+	printf("V");
+	if(u==6)
+	printf("VI");
+	if(u==7)
+	printf("VII");
+	if(u==8)
+	printf("VIII");
+	if(u==9)
+	printf("IX");
+
+}

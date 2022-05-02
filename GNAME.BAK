@@ -1,0 +1,27 @@
+#include<conio.h>
+#include<stdio.h>
+#include<graphics.h>
+#include<dos.h>
+void draw()
+{
+	int gd,gm;
+	gm=gd=DETECT;
+	initgraph(&gm,&gd," ");
+	//setcolor(i);
+	       //	circle(x,y,r);
+	line(10,10,10,50);
+	circle(20,20,10);
+	line(35,10,35,55);
+	circle(45,20,10);
+	line(40,35,60,55);
+	line(70,10,62,55);
+	line(70,10,78,55);
+	line(
+	getch();
+	closegraph();
+}
+void main()
+{
+	clrscr();
+	draw();
+}

@@ -1,0 +1,17 @@
+#include<conio.h>
+#include<stdio.h>
+#include<math.h>
+void main()
+{
+	int gr=0,i=0,x;
+	clrscr();
+	while(i<5)
+	{
+		printf("Enter the value\n");
+		scanf("%d",&x);
+		gr=x>gr?x:gr;
+		i++;
+	}
+	printf("Geatest value=%d",gr);
+	getch();
+}

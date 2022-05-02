@@ -1,0 +1,16 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int i=0,j=1,n;
+	clrscr();
+	printf("Enter the number");
+	scanf("%d",&n);
+	while(n>i)
+	{
+	printf("%d ",i);
+	i=i+j;
+	j=i-j;
+	}
+	getch();
+}

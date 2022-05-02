@@ -1,0 +1,12 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+void main(){
+	int gm,gd;
+	gm=gd=DETECT;
+	initgraph(&gm,&gd," ");
+	clrscr();
+	line(100,100,200,200);
+	getch();
+	closegraph();
+}

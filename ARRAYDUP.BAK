@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include<conio.h>
+void remove(int,int);
+void readdata(int,int);
+void main()
+{
+	int i,j,k,num,flag=0,a[10],n;
+	clrscr();
+	printf("Enter the size of array\n");
+	scanf("%d",&n);
+	readdata(a,n);
+	remove(a,n);
+	getch();
+}
+void remove(int a[],int n)
+{
+	int i,j,flag,k;
+	for(i=0;i<n-1;i++)
+	{
+		for(j=i+1;j<n;j++)
+		{
+			if(a[i]==a[j])
+			n=n-1;
+		   for(k=j;k<n;k++)
+			a[k]=a[k+1];
+			flag=1;
+			j=j-1;
+		}
+	}
+	if(flag==0)
+		printf("No. Duplicate\n");
+	else
+	{
+		printf("Array is Duplicate\n");
+		for(i=0;i<n;i++)
+		printf("%d",a[i]);
+	}
+}
+void readdata(int a[],int n)
+{
+	int i;
+	printf("Enter the no.");
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+}

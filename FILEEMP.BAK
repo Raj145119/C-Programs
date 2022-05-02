@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+struct emp
+{
+	int id;
+	char name[20];
+	int age;
+	float sal;
+};
+void main()
+{
+	char another='y';
+	struct emp e1;
+	FILE *fp;
+	fp=fopen("emp.txt","a");
+	if(fp==NULL)
+	{
+		printf("file is not created\n");
+		exit(0);
+	}
+	while(another=='y')
+	{
+		printf("Enter the Employ ID:");
+		scanf("%d",&e1.id);
+		printf("\nEnter the Name: ");
+		scanf("%s",e1.name);
+		printf("\nEnter the Basic Salary:");
+		scanf("%f",&e1.sal);
+		fprintf(fp,"%d",e1.id);
+		fprintf(fp,"%c",e1.name);
+		fprintf(fp,"%f",e1.sal);
+		printf("Add another record(y/n)");
+		fflush(stdin);
+		another=getche();
+	}
+	fclose(fp);
+	//getch();
+}

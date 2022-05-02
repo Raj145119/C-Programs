@@ -1,0 +1,51 @@
+#include<stdio.h>
+#include<conio.h>
+struct node
+{
+  int data;
+  struct node *next;
+}*start;
+void insert(int a)
+{
+    struct node *temp,*p;
+    temp=(struct node *)malloc(sizeof(struct node));
+    temp->data=a;
+    temp->next=NULL;
+    if(start==NULL)
+    {
+	start=temp;
+    }
+    else
+    {
+	p=start;
+	while(p->next!=NULL)
+        p=p->next;
+        p->next=temp;
+    }
+}
+void rev_print(struct node *p)
+{
+    if(p==NULL)
+        return;
+    rev_print(p->next);
+    printf("data=%d\n",p->data);
+}
+
+void main()
+{
+    int n;
+    start=NULL;
+    printf("\nEnter the data\n");
+    scanf("%d",&n);
+    insert(n);
+    printf("\nEnter the data\n");
+    scanf("%d",&n);
+    insert(n);
+    printf("\nEnter the data\n");
+    scanf("%d",&n);
+    insert(n);
+    printf("\nEnter the data\n");
+    scanf("%d",&n);
+    insert(n);
+    rev_print(start);
+}

@@ -1,0 +1,8 @@
+#include<conio.h>
+#include<iostream.h>
+void main(int counter,char *str[])
+{
+	clrscr();
+	cout<<"Your Name is ="<<str[1];
+	getch();
+}

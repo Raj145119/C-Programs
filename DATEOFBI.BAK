@@ -1,0 +1,38 @@
+#include<iostream.h>
+#include<conio.h>
+class A
+{
+	long y,m,d,y2,m2,d2;
+	char ch;
+	public:
+	void getdob();
+};
+
+void A::getdob()
+{
+       //	cout<<"Enter Your Name\n";
+       //	cin>>ch;
+	cout<<"**** Enter your DATE OF BIRTH  ****\n";
+	//getch();
+	cout<<"****##### FORMATE   YY MM DD ####****\n";
+	cout<<"Year=";
+	cin>>y;
+	cout<<"Month=";
+	cin>>m;
+	cout<<"Date=";
+	cin>>d;
+	cout<<"****Enter Second DATE MONTH YEAR ****\n";
+	cout<<"Year=";
+	cin>>y2;
+	cout<<"Month=";
+	cin>>m2;
+	cout<<"Date=";
+	cin>>d2;
+}
+void main()
+{
+	A a;
+	clrscr();
+	a.getdob();
+	getch();
+}

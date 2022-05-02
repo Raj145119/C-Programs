@@ -1,0 +1,19 @@
+#include<stdio.h>
+#include<conio.h>
+void even(int i)
+{
+	if(i%2==0)
+	printf("%d is even",i);
+	else
+	printf("%d is odd",i);
+
+}
+void main()
+{
+	int i;
+	clrscr();
+	printf("Enter the number\n");
+	scanf("%d",&i);ccbbdd
+	even(i);
+	getch();
+}

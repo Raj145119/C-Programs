@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<conio.h>
+#include<dos.h>
+void main()
+{
+	int x=2,y=2,i=2,m=0;
+	clrscr();
+	d:
+	gotoxy(x,y);
+	if(i%2==0)
+	textcolor(RED);
+	else
+	{
+	textcolor(BLACK);
+	y=y+10;
+	m++;
+	if(m>=2)
+	{y=2,x=x+10;}
+	}
+	cprintf("praveen");
+	delay(200);
+	i++;
+	if(kbhit()==0)
+	goto d;
+	getch();
+	}
+

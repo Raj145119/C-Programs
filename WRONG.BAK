@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int a,b,res;
+	char oper,ch;
+	clrscr();
+	printf("enter the 2 value");
+	scanf("%d%d",&a,&b);
+	fflush(stdin);
+	printf("enter the oper");
+	scanf("%C",oper);
+	if('+')
+	//res=(a+b);
+	printf("%d",res);
+	getch();
+}

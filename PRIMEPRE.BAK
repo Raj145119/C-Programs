@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int x=20,y,z;
+	clrscr();
+	while(x<=100)
+	{
+		y=0;
+		for(z=1;z<=x;z++)
+		{
+			if(x%z==0)
+			{
+				y++;
+			}
+
+		}
+		if(y==2)
+			printf("Prime No %d\n",x);
+
+		x++;
+	}
+
+       getch();
+}

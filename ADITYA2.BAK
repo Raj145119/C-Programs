@@ -1,0 +1,11 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	clrscr();
+	printf("%f",15);
+	printf("\n%d",16.434);
+	printf("%c","dgb");
+	printf("%s","abc");
+	getch();
+}

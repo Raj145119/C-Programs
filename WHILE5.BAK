@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int n,x,n1,m;
+	clrscr();
+	printf("\nenter the number");
+	scanf("%d",&n);
+	n1=n;
+	 while(n!=0)
+	{
+		x=n%10;
+		m=x;
+		n=n/10;
+	     printf("%d",m);
+	     }
+
+
+	    // sum=sum+x;
+
+	    if(n1==m)
+	    {
+	  printf("yes");}
+	  else
+	printf("\nno");
+	printf("\n%d",n1);
+	 getch();
+
+}
+

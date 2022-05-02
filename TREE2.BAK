@@ -1,0 +1,250 @@
+#include<stdio.h>
+#include<conio.h>
+#include<malloc.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    int height;
+    struct node *pre;
+    struct node *next;
+
+};
+struct node *root;
+int balancefactor;
+/*void createnode(int item)
+{
+    struct node *temp,*p;
+    temp=(struct node *)malloc(sizeof(struct node));
+    temp->data=item;
+    temp->next=NULL;
+    temp->pre=NULL;
+    if(root==NULL){
+	root=temp;
+	return;
+    }
+    p=root;
+    if(p->data>temp->data){
+	if(p->pre==NULL){
+	    p->pre=temp;
+	    return;
+	}
+    }
+    else{
+	if(p->next==NULL){
+	    p->next=temp;
+	    return;
+	}
+    }
+    while((p->next!=NULL)||(p->pre!=NULL)){
+   // if(p->next!=NULL||)
+   // {
+	if(p->data>temp->data){
+	    p=p->pre;
+	}
+	else{
+	    p=p->next;
+	}
+
+    }
+    if(p->data>temp->data){
+	p->pre=temp;
+    }else{
+	p->next=temp;
+    }
+}*/
+
+void insert(struct node **q,int num)
+{
+    struct node *temp,*p,*temp1;
+    if(*q==NULL){
+	temp=(struct node *)malloc(sizeof(struct node));
+	temp->data=num;
+	temp->next=NULL;
+	temp->pre=NULL;
+	(*q)->height=0;
+	 *q=temp;
+    }
+    else{
+	if((*q)->data>num)
+	    insert(&(*q)->pre,num);
+	else
+	    insert(&(*q)->next,num);
+
+       }
+       if((*q)->pre->height>(*q)->next->height)
+       {
+	    (*q)->height=(*q)->pre->height+1;
+       }
+       else
+	    (*q)->height=(*q)->next->height+1;
+
+       printf("\nHeight of node %d =%d",(*q)->data,(*q)->height);
+       //	(*q)->height=max((*q)->pre->height,(*q)->next->height)+1;
+       balancefactor=abs((*q)->pre->height-(*q)->next->height);
+       printf(" Balnce Factor=%d",balancefactor);
+       if((balancefactor>1)&&(num<(*q)->pre->data))  //ll rotation
+       {
+		p=(*q)->pre;
+		temp1=p->next;
+		p->next=(*q);
+		(*q)->pre=temp1;
+		(*q)->height=max((*q)->pre->height,(*q)->next->height)+1;
+		printf("\nHeight of node %d =%d",(*q)->data,(*q)->height);
+		balancefactor=abs((*q)->pre->height-(*q)->next->height);
+		*q=p;
+       }
+       if(balancefactor>1&&num>(*q)->next->data)//rr rotation
+       {
+		p=(*q)->next;
+		temp1=p->pre;
+		p->pre=(*q);
+		(*q)->next=temp1;
+		(*q)->height=max((*q)->pre->height,(*q)->next->height)+1;
+		printf("\nHeight of node %d =%d",(*q)->data,(*q)->height);
+		balancefactor=abs((*q)->pre->height-(*q)->next->height);
+		*q=p;
+       }
+       if(balancefactor>1&&num>(*q)->next->pre->data)//rl rotation
+       {
+	   //leftrotatoin((*q)->legft);
+	   //rightrotation(*q);
+	   //getch();
+		p=(*q)->next;
+		temp1=p->pre;
+		p->pre=temp1->next;
+		temp1->next=p;
+		(*q)->next=temp1;
+
+		//
+		temp1->pre=*q;
+		(*q)->next=NULL;
+	       //	*q=temp1;
+		(*q)->height=max((*q)->pre->height,(*q)->next->height)+1;
+		printf("\nHeight of node %d =%d",(*q)->data,(*q)->height);
+		balancefactor=abs((*q)->pre->height-(*q)->next->height);
+		*q=temp1;
+
+       }
+       if(balancefactor>1&&num>(*q)->pre->data)  //lr rotation
+       {
+	  // rightrotation((*q)->right);
+	  // leftrotation(*q);
+
+		p=(*q)->pre;
+		temp1=p->next;
+		p->next=temp1->pre;
+		temp1->pre=p;
+		(*q)->pre=temp1;
+
+		//
+		temp1->next=*q;
+		(*q)->pre=NULL;
+		(*q)->height=max((*q)->pre->height,(*q)->next->height)+1;
+		printf("\nHeight of node %d =%d",(*q)->data,(*q)->height);
+		balancefactor=abs((*q)->pre->height-(*q)->next->height);
+		*q=temp1;
+	  }
+
+
+}
+/*void rightrotation(struct node **q)
+{
+	struct node *p,*temp;
+	p=(*q)->pre;
+	temp=p->next;
+	p->next=(*q);
+	(*q)->pre=temp;
+	(*q)->height=max((*q)->pre->height,(*q)->next->height)+1;
+	 printf("\nHeight of node %d =%d",(*q)->data,(*q)->height);
+       //	(*q)->height=max((*q)->pre->height,(*q)->next->height)+1;
+       balancefactor=abs((*q)->pre->height-(*q)->next->height);
+} */
+/*void search(int item)
+{
+    struct node *p;
+    p=root;
+    if(p->data==item){
+	printf("FOUNDED DATA=%d",p->data);
+	return;
+    }
+    else{
+	while(p->next!=NULL||p->pre!=NULL){
+
+
+	    if(p->data>item){
+		p=p->pre;
+	    }
+	    else{
+		p=p->next;
+	    }
+	    if(p->data==item){
+		 printf("FOUNDED DATA=%d",p->data);
+		 return;
+	    }
+
+	}
+    }
+}*/
+void search(struct node **q,int item)
+{
+    struct node *p;
+    p=*q;
+    if(p->data==item){
+	printf("DATA=%d",p->data);
+	return;
+    }
+    else{
+	while(p->next!=NULL){
+	    if(p->data>item){
+		p=p->pre;
+	    }
+	    else{
+		p=p->next;
+	    }
+	    if(p->data==item){
+		 printf("\nFOUNDED DATA=%d",p->data);
+		 return;
+	    }
+
+	}
+    }
+}
+void dis_inorder(struct node **p)
+{
+    /*if(p->pre)
+	dis_inorder(p->pre);
+	printf("Data =%d\n",p->data);
+    if(p->next)
+	dis_inorder(p->next);   */
+	if((*p)==NULL)
+	return;
+	dis_inorder(&(*p)->pre);
+	printf("\n%d",(*p)->data);
+	dis_inorder(&(*p)->next);
+}
+void main()
+{
+    int item,n,i;
+    struct node *s;
+    s=NULL;
+    root=NULL;
+    clrscr();
+    printf("\nenter the no of node to be create\n");
+    scanf("%d",&n);
+    for(i=0;i<n;i++){
+	printf("\nEnter the %d data \n",i+1);
+	scanf("%d",&item);
+
+	//createnode(item);
+	insert(&s,item);
+       //	printf("Height of node %d =%d",s->data,s->height);
+    }
+    dis_inorder(&s);
+    printf("\nEnter the data for search in tree\n");
+    scanf("%d",&item);
+    search(&s,item);
+    printf("\nHeight of tree=%d",s->height);
+    getch();
+    //search(&s,data);
+}

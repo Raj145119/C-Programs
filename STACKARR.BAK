@@ -1,0 +1,116 @@
+#include<stdio.h>
+#include<conio.h>
+#define max 10
+int stak[max],top=-1,m;
+void push(int);
+void pop();
+void display();
+void search(int);
+void count();
+void main()
+{
+	int i,ch;
+	clrscr();
+	while (1)
+	{
+		printf("ENTER THE CHOICE\n");
+		printf("ENTER  1: for push\n");
+		printf("ENTER  2:for pop\n");
+		printf("ENTER  3: for display\n");
+		printf("ENTER  4:for search\n");
+		printf("ENTER  5:for count\n");
+		printf("ENTER  6: for exit\n");
+		scanf("%d",&ch);
+
+	     switch(ch)
+	     {
+			case 1:
+				if(top==max-1)
+				{
+					printf("stak over flow \n");
+					break;
+				}
+				printf("ENTER THE DATA\n");
+				scanf("%d",&m);
+				push(m);
+			break;
+			case 2:
+				if(top==-1)
+				{
+					printf("stak is empty....\n");
+					break;
+				}
+				pop();
+			break;
+			case 3:
+				if(top==-1)
+				{
+					printf("stack is empty....\n");
+					break;
+				}
+				display();
+			break;
+			case 4:
+			       if(top==-1)
+				{
+					printf("stack is empty....\n");
+					break;
+				}
+				printf("Enter the data to search\n");
+				scanf("%d",m);
+				search(m);
+			break;
+			case 5:
+				if(top==-1)
+				{
+					printf("stack is empty....\n");
+					break;
+				}
+				count();
+			break;
+			case 6:
+				exit();
+			default:
+				printf("WRONG POSITION\n");
+	     }
+	     getch();
+      }
+}
+void push(int item)
+{
+	top++;
+	stak[top]=item;
+	printf("data pused\n");
+}
+void pop()
+{
+	printf("%d DATA=%d\n",(top+1),stak[top]);
+	top--;
+}
+void display()
+{
+	int i,n=1;
+	for (i=top;i>=0;i--)
+	{
+		printf("%d data=%d\n",n++,stak[i]);
+	}
+}
+void search(int item)
+{
+	int i;
+	for(i=0;i<=top;i++)
+	{
+		if(item==stak[i] )
+		{
+			printf("data is found is %d\n ",(i+1));
+			return;
+		}
+	}
+	printf("data not found in stak\n");
+}
+void count()
+{
+	int i;
+	for(i=0;i<=top;i++);
+	printf("total no oddbbf data in stak%d\n",i);
+}

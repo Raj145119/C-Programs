@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int i,z=0,y;
+
+	clrscr();
+	for(i=1;i<=10;i++)
+	{
+	z++;
+	y+=10;
+	gotoxy(20,y);
+
+	if(z%2==0)
+
+	{
+		textcolor(BLUE);
+
+		cprintf("PRAVEEN");
+       }
+       else
+	{
+	 textcolor(RED);
+	 cprintf("PRAVEEN");
+
+	}
+       delay(200);
+       if (kbhit()==0);
+       }
+       getch();
+}

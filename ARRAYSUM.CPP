@@ -1,0 +1,27 @@
+#include<iostream.h>
+#include<conio.h>
+class  P
+{
+	public:
+	int array[5];
+	char a[5];
+
+};
+void main()
+{
+	P obj;
+	int sum=0,x;
+	clrscr();
+	cout<<"Enter the 5 value in an array\n";
+	for(int i=0;i<5;i++)
+	{
+		cin>>obj.array[i];
+	}
+	for(i=0;i<5;i++)
+	sum=sum+obj.array[i];
+	cout<<sum;
+	cout<<"Enter the yiur name\n";
+	cin>>obj.a;
+	cout<<obj.a;
+	getch();
+}

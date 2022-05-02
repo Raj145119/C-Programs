@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int i,j,n,sum=0,fact=1,k=0,m;
+	clrscr();
+	printf("\nenter the number");
+	scanf("%d",&n);
+	for(i=1;i<=n;i++);
+	{
+	   fact=fact*i;
+	   j=fact-k;
+
+	   m=j-fact/i;
+	   sum=sum+m;
+
+	}
+	k++;
+	printf("sum=%d",sum);
+	getch();
+}

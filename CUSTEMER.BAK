@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	float amount;
+	int rs;
+	char ch;
+	printf("Enter the Amount\n");
+	scanf("%d",&rs);
+	printf("Enter which type of person customer/broker/seller\n");
+	scanf("%c",&ch);
+	switch(ch)
+	{
+		case'c':
+		case'C':
+		amount=rs*(10/100);
+		printf("Amount=%f",amount);
+		break;
+		case'b':
+		case'B':
+		amount=rs*(10/100);
+		printf("Amount=%f",amount);
+		break;
+		case's':
+		case'S':
+		amount=rs*(10/100);
+		printf("Amount=%f",amount);
+		break;
+		default:
+		printf("Wrong choice\n");
+	}
+	getch();
+}

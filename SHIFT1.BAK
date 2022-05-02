@@ -1,0 +1,14 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int x,a;
+	clrscr();
+	printf("enter the value");
+	x=a>>2;
+	scanf("%d",a);
+	x=a>>2;
+	printf("x=%d",x);
+	getch();
+
+}

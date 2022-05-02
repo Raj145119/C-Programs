@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<conio.h>
+void factorial();
+
+void main()
+{
+	clrscr();
+	factorial();
+	getch();
+}
+void factorial()
+{
+	int fact=1,i,x,*p,*pt;
+	p=&x;
+	pt=&fact;
+	printf("enter the value ");
+	scanf("%d",p);
+	for(i=*p;i>0;i--)
+	{
+		*pt=*pt * i;
+
+	}
+	printf("%d",fact);
+}

@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<conio.h>
+#include<dos.h>
+#include<graphics.h>
+union REGS in,out;
+void show()
+{
+	in.x.ax=1;
+	int86(0x33,&in,&out);
+}
+void call
+{
+	in.x.ax=0;
+	int86(0x33,&in,&out);
+}
+void set(int x,int y)
+{
+	in.x.ax=4;
+	in.x.cx=x;
+	in.x.dx=y;
+}
+void main()
+{
+	int gd,gm,;
+	gd=gm=DETECT;
+	clrscr();
+	initgraph(&gm,&gd," ");
+	call();
+	show();
+	set(23,77);
+	getch();
+       /*	in.x.ax=0;
+	int86(51,&in,&out);
+	if(out.x.ax==0)
+	printf("not avilable");
+	else
+	printf("avilable");
+	getch();*/
+}

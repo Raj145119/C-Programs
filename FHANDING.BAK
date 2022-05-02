@@ -1,0 +1,19 @@
+#include<stdio.h>
+#include<conio.h>
+#include<process.h>
+void main()
+{
+	int x,y;
+	char ch;
+	FILE *fp
+	fp=fopen("nitrr.txt","w");
+	if(fp==NULL)
+	{
+		printf("File is not create\n");
+		exit(0);
+	}
+	printf("Enter the character\n");
+	scanf("%c",&ch);
+	fputs(fp,ch);
+
+}

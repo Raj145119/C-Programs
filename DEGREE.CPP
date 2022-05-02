@@ -1,0 +1,20 @@
+#include<iostream.h>
+#include<conio.h>
+#include<math.h>
+class a
+{
+	public:
+	double x,y;
+};
+void main()
+{
+	a obj;
+	double z,s;
+	clrscr();
+	cout<<"Enter the value in degree\n";
+	cin>>obj.x;
+	z=sin(3.14/180*obj.x);
+	s=cos (obj.x);
+	cout<<"sin="<<z;
+	cout<<"\ncos="<<s;
+	getch();

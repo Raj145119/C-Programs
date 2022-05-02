@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<conio.h>
+#include<math.h>
+void main()
+
+{
+	int x,n,i,sum=0,m;
+	clrscr();
+	printf("\nenter the value:");
+	scanf("%d",&n);
+	i=n;
+	while(n!=0)
+	{
+		m=n%10;
+		n=n/10;
+	       //	printf("%d",m);
+		x=m*m*m;
+		sum=sum+x;
+	}
+
+	if(sum==i)
+	{
+		printf("armstrong no.=%d",sum);
+	}
+
+	else
+	{
+		printf("not armstrong no.=%d",sum);
+	}
+
+	getch();
+	}

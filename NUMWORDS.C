@@ -1,0 +1,130 @@
+#include<stdio.h>
+#include<conio.h>
+void letter();
+void letter1(int,int);
+void main()
+{
+	int a,b,c,d,e,f;
+	clrscr();
+	printf("Enter the no. Between 1 to 9999\n");
+	scanf("%d",&a);
+	if(a==0||a>9999)
+	{
+		printf("Invalid no.\n");
+	}
+	else
+	letter(a);
+	getch();
+}
+void letter(int a)
+{
+	int t,h,d,u,c,e;
+	t=a/1000;
+	c=a%1000;
+	h=c/100;
+	e=c%100;
+	d=e/10;
+	u=e%10;
+	if(t==1)
+	printf("ONE THOUSAND");
+	if(t==2)
+	printf("TWO THOUSAND");
+	if(t==3)
+	printf("THREE THOUSAND");
+	if(t==4)
+	printf("FOUR THOUSAND");
+	if(t==5)
+	printf("FIVE THOUSAND");
+	if(t==6)
+	printf("SIX THOUSAND");
+	if(t==7)
+	printf("SEVEN THOUSAND");
+	if(t==8)
+	printf("EIGHT THOUSAND");
+	if(t==9)
+	printf("NINE THOUSAND");
+	if(h==1)
+	printf(" ONE HUNDRED");
+	if(h==2)
+	printf(" TWO HUNDRED");
+	if(h==3)
+	printf(" THREE HUNDRED");
+	if(h==4)
+	printf(" FOUR HUNDRED");
+	if(h==5)
+	printf(" FIVE HUNDRED");
+	if(h==6)
+	printf(" SIX HUNDRED");
+	if(h==7)
+	printf(" SEVEN HUNDRED");
+	if(h==8)
+	printf(" EIGHT HUNDRED");
+	if(h==9)
+	printf(" NINE HUNDRED");
+	if(d==1)
+	{
+	   letter1(d,u);
+	}
+	else
+	{
+	if(d==2)
+	printf(" TWENTY");
+	if(d==3)
+	printf(" THIRTY");
+	if(d==4)
+	printf(" FOURTY");
+	if(d==5)
+	printf(" FIFTY");
+	if(d==6)
+	printf(" SIXTY");
+	if(d==7)
+	printf(" SEVENTY");
+	if(d==8)
+	printf(" EIGHTY");
+	if(d==9)
+	printf(" NINTY");
+	if(u==1)
+	printf(" ONE");
+	if(u==2)
+	printf(" TWO");
+	if(u==3)
+	printf(" THREE");
+	if(u==4)
+	printf(" FOUR");
+	if(u==5)
+	printf(" FIVE");
+	if(u==6)
+	printf(" SIX");
+	if(u==7)
+	printf(" SEVEN");
+	if(u==8)
+	printf(" EIGHT");
+	if(u==9)
+	printf(" NINE");
+	}
+
+}
+void letter1(int d,int u)
+{
+	if(d==1&&u==0)
+	printf(" TEN");
+	if(d==1&&u==1)
+	printf(" ELEVEN");
+	if(d==1&&u==2)
+	printf(" TWEVEL");
+	if(d==1&&u==3)
+	printf(" THIRTEEN");
+	if(d==1&&u==4)
+	printf(" FOURTEEN");
+	if(d==1&&u==5)
+	printf(" FIFTEEN");
+	if(d==1&&u==6)
+	printf(" SIXTEEN");
+	if(d==1&&u==7)
+	printf(" SENVENTEEN");
+	if(d==1&&u==8)
+	printf(" EIGHTEEN");
+	if(d==1&&u==9)
+	printf(" NINTEEEN");
+
+}

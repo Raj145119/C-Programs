@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<conio.h>
+char sum(char*,int);
+void main()
+{
+	char arr[5],*res;
+	int j=5;
+	clrscr();
+	printf("Enter the string in an aray\n");
+	gets(arr);
+	*res=sum(arr,j);
+	puts(res);
+	getch();
+}
+char sum(char arr[5],int i)
+{
+	static char s;
+	if(i>=0)
+	{
+		s=arr[i];
+		sum(arr,--i);
+	}
+	else
+	return s;
+
+
+}

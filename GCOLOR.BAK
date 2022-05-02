@@ -1,0 +1,67 @@
+	/*flag of india*/
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+#include<dos.h>
+void draw()
+{
+	int x,y,gm,gd;
+	gm=gd=DETECT;
+	initgraph(&gm,&gd," ");
+	//setfillstyle(SOLID_FILL,BLUE);
+	rectangle(50,50,450,450);
+
+	rectangle(60,60,160,160);
+	rectangle(340,60,440,160);
+	rectangle(60,340,160,435);
+	rectangle(340,340,440,440);
+	line(325,50,325,450);
+	line(170,50,170,450);
+
+	line(50,170,450,170);
+	line(50,330,450,330);
+
+	line(50,220,450,220);
+	line(50,280,450,280);
+
+	line(275,50,275,450);
+	line(220,50,220,450);
+
+	line(70,170,70,330);
+	line(90,170,90,330);
+	line(110,170,110,330);
+	line(130,170,130,330);
+	line(150,170,150,330);
+
+	line(345,170,345,330);
+	line(365,170,365,330);
+	line(385,170,385,330);
+	line(405,170,405,330);
+	line(430,170,430,330);
+
+	line(170,65,325,65);
+	line(170,85,325,85);
+	line(170,105,325,105);
+	line(170,125,325,125);
+	line(170,145,325,145);
+
+	line(170,350,325,350);
+	line(170,370,325,370);
+	line(170,390,325,390);
+	line(170,410,325,410);
+	line(170,430,325,430);
+
+	circle(75,75,7);
+	//floodfill(55,55,15);
+	//setfillstyle(HATCH_FILL,RED);
+	//circle(250,250,100);
+	//floodfill(255,255,15);
+	getch();
+	closegraph();
+
+}
+void main()
+{
+	clrscr();
+	draw();
+}

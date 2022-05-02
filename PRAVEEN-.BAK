@@ -1,0 +1,13 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int x=4,y=5,z;
+	printf("before swaping value of x is:%d and y is:%d\n",x,y);
+	z=x;
+	x=y;
+	y=z;
+	printf("after swaping value of x is:%d and y is:%d",x,y);
+	getch();
+
+}

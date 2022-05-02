@@ -1,0 +1,15 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{	int x,y,z;
+	clrscr();
+	printf("enter  the value of two no.");
+	scanf("%d%d",&x,&y);
+	z=x+y;printf("z=%d");
+
+
+	getch();
+
+
+
+}

@@ -1,0 +1,193 @@
+#include<stdio.h>
+#include<conio.h>
+#include<malloc.h>
+#include<stdlib.h>
+struct tree
+{
+    int data;
+    struct tree *pre;
+    struct tree *next;
+    int height;
+};
+struct tree *root;
+struct tree* insert(struct tree *q,int item)
+{
+    if(q==NULL)
+    {
+	struct tree *temp;
+	temp=(struct tree *)malloc(sizeof(struct tree));
+	temp->data=item;
+	q=temp;
+	return q;
+    }
+    else
+    {
+	if(item<q->data)
+	{
+	    q->pre=insert(q->pre,item);
+	}
+	else
+	q->next=insert(q->next,item);
+    }
+    return q;
+}
+void insert1(struct tree **q,int item)
+{
+    if(*q==NULL)
+    {
+	struct tree *temp;
+	temp=(struct tree *)malloc(sizeof(struct tree));
+	temp->data=item;
+	temp->pre=NULL;
+	temp->next=NULL;
+	(*q)->height=0;
+	*q=temp;
+    }
+    else
+    {
+	if(item<(*q)->data)
+	{
+		insert1(&(*q)->pre,item);
+	}
+	else
+		insert1(&(*q)->next,item);
+    }
+	(*q)->height=max((*q)->pre->height,(*q)->next->height)+1;
+}
+void delete1(struct tree **q,int item)
+{
+	struct tree *p,*x,*y;
+	p=*q;
+	    while(p->next!=NULL||p->pre!=NULL){
+	    if(p->data>item){
+		x=p;
+		p=p->pre;
+	    }
+	    else{
+		x=p;
+		p=p->next;
+	    }
+	    if(p->data==item && p->pre==NULL&&p->next==NULL){
+		 printf("\nDELETED DATA=%d",p->data);
+		 if(x->data>item)
+		 x->pre=NULL;
+		 else
+		 x->next=NULL;
+		 free(p);
+		 return;
+	    }
+	    if(p->data==item && p->pre==NULL && p->next!=NULL)
+	    {
+		x=p->next;
+		printf("\nDELETED DATA=%d",p->data);
+		p->data=p->next->data;
+		p->pre=p->next->pre;
+		p->next=p->next->next;
+		free(x);
+		return;
+	    }
+
+	    if(p->data==item && p->pre!=NULL && p->next==NULL)
+	    {
+		x=p->pre;
+		printf("\nDELETED DATA=%d",p->data);
+		p->data=p->pre->data;
+		p->pre=p->pre->pre;
+		p->next=p->pre->next;
+		free(x);
+		return;
+	    }
+	    if(p->data==item && p->pre!=NULL && p->next!=NULL)
+	    {
+		x=p->next;
+
+		while(x->pre!=NULL)
+		{
+			y=x;
+			x=x->pre;
+		}
+		p->data=x->data;
+		if(x->pre==NULL&&x->next==NULL)
+		{
+			y->pre=NULL;
+			free(x);
+			return;
+		}
+		if(x->pre==NULL&&p->next->next!=NULL)
+		{
+			p->next=p->next->next;
+			free(x);
+			return;
+		}
+		if(x->pre==NULL&&x->next!=NULL)
+		{
+			y->pre=x->next;
+			free(x);
+			return;
+		}
+	    }
+	}
+}
+void inorderdisplay(struct tree *q)
+{
+    if(q==NULL)
+	return;
+    inorderdisplay(q->pre);
+    printf("\n%d",q->data);
+    inorderdisplay(q->next);
+}
+void search(struct tree **q,int item)
+{
+    struct tree *p;
+    p=*q;
+    if(p->data==item){
+	printf("DATA=%d",p->data);
+	return;
+    }
+    else{
+	while(p->next!=NULL||p->pre!=NULL){
+	    if(p->data>item){
+		p=p->pre;
+	    }
+	    else{
+		p=p->next;
+	    }
+	    if(p->data==item){
+		 printf("\nFOUNDED DATA=%d",p->data);
+		 return;
+	    }
+	}
+    }
+}
+void main()
+{
+    int n,i,d;
+    struct tree *s;
+    root=NULL;
+    s=NULL;
+    clrscr();
+   /* root=insert(root,40);
+    insert(root,20);
+   insert(root,45);
+    insert(root,30);
+    insert(root,50);
+    insert(root,65);   */
+    printf("Enter the no. of node\n");
+    scanf("%d",&n);
+    for(i=0;i<n;i++){
+	printf("\nEnter the data");
+	scanf("%d",&d);
+	insert1(&s,d);
+    }
+    inorderdisplay(s);
+    printf("\nEnter the data for search");
+    scanf("%d",&n);
+    search(&s,n);
+    printf("\nheight=%d",s->height);
+    printf("\nroot=%d",s->data);
+    printf("\nEnter the no for delete");
+    scanf("%d",&n);
+    delete1(&s,n);
+    inorderdisplay(s);
+    getch();
+}

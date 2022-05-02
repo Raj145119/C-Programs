@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	//change capital to small//
+	int  i=0,j=0;
+	char st1[10],st2[10];
+	clrscr();
+	printf("\n Enter the string");
+	gets(st1);
+
+      while(st1[i] !='\0')
+	{
+		st2[j]=st1[i]+32;
+		j++;
+		i++;
+	}
+       //	puts(st2);
+	printf("\n%s",st2);
+	getch();
+
+}

@@ -1,0 +1,107 @@
+#include<stdio.h>
+#include<conio.h>
+#define max 5
+int queue[max],front=-1,rear=-1,n;
+void insert();
+void delete1();
+void display();
+void main()
+{
+	int ch;
+	clrscr();
+	while (1)
+	{
+		clrscr();
+		printf("ENTER THE CHOICE\n");
+		printf("ENTER  1: for insert\n");
+		printf("ENTER  2:for delete\n");
+		printf("ENTER  3: for display\n");
+		printf("ENTER  4: for exit\n");
+		scanf("%d",&ch);
+
+	     switch(ch)
+	     {
+			case 1:
+				insert();
+			break;
+			case 2:
+				delete1();
+			break;
+			case 3:
+				display();
+			break;
+			case 4:
+				exit();
+			default:
+				printf("WRONG POSITION\n");
+	     }
+	     getch();
+      }
+}
+void insert()
+{
+	if((front==0 && rear==max-1)||rear+1==front)
+	{
+		printf("QUEUE IS OVER FLOW\n");
+		return;
+	}
+	printf("enter the data\n");
+	scanf("%d",&n);
+	if(front==-1)
+	{
+		rear=0;
+		front=0;
+		queue[rear]=n;
+		printf("Data inserted at position%d\n",rear+1);
+	}
+	else
+	{
+		rear++;
+		queue[rear]=n;
+		printf("Data inserted at position%d\n",rear+1);
+	}
+	if(front>0&&rear==max-1)
+	rear=0;
+       /*	else
+	rear++;**/
+}
+void delete1()
+{
+	if(front==-1||front>rear)
+	{
+		printf("queue is empty\n");
+		return;
+	}
+	printf("Data deleted\n");
+	front++;
+}
+void display()
+{
+	int i;
+	if(front==-1||front>rear)
+	{
+		printf("queue is empty\n");
+		return;
+	}
+
+	if(front>rear)
+	{
+		for(i=0;i<=rear;i++)
+		{
+			printf("DATA= %d\n",queue[i]);
+		}
+		for(i=front;i<=max-1;i++)
+		{
+			printf("DATA=%d\n",queue[i]);
+		}
+
+
+	}
+	else
+	{
+		for(i=front;i<=rear;i++)
+		{
+			printf("DATA=%d\n",queue[i]);
+		}
+	}
+}

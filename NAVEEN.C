@@ -1,0 +1,92 @@
+#include<stdio.h>
+#include<conio.h>
+struct node
+{
+	int data;
+	struct node *left;
+	struct node *right;
+};
+struct node *root=NULL;
+void insert(int d)
+{
+	struct node *temp,*current,*parent;
+	temp=(struct node*)malloc(sizeof(struct node));
+	temp->left=NULL;
+	temp->right=NULL;
+	//parent=NULL;
+	temp->data=d;
+	if(root==NULL)
+	{
+		root=temp;
+	}
+	else
+	{        current=root;
+		if(current->data>temp->data)
+		{
+			if(current->left==NULL)
+			{
+			current->left=temp;
+			}
+		}
+		else
+		{
+		   if(current->right==NULL)
+		   {
+			current->right=temp;
+		   }
+		}
+	}
+	       //	current=root;
+		while((current->right!=NULL)||(current->left!=NULL))
+		{
+			//parent=current;
+			if(current->data>temp->data)
+			{
+				current=current->right;
+			}
+			else
+			{
+				current=current->left;
+			}
+		}
+		if(temp->data>current->data)
+		{
+			current->right=temp;
+		}
+		else
+		{
+	    current->left=temp;
+		}
+
+	}
+}
+void inorder(struct node *temp)
+{
+	if(temp->left)
+	  inorder(temp->left);
+	  printf("%d",temp->data);
+	if(temp->right)
+	   inorder(temp->right);
+	   /*if(temp==NULL)
+	   return;
+	   inorder(temp->left);
+	   printf("%d",temp->data);
+	   inorder(temp->right);*/
+
+}
+void main()
+{
+	struct node *temp;
+	temp=NULL;
+	insert(50);
+	getch();
+	insert(60);
+	getch();
+
+	insert(70);
+	getch();
+
+    insert(40);
+	getch();
+	inorder(root);
+}

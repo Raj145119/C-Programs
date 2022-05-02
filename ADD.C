@@ -1,0 +1,67 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<string.h>
+
+void input();
+void display();
+
+void main()
+{
+	 clrscr();
+	 input();
+	 display();
+	 getch();
+}
+
+void input()
+{
+
+   FILE *fp;
+   char *ch=" ";
+
+   fp=fopen("record.txt","a");
+   printf("ENTER DETAILS \n");
+
+   while(1)
+   {
+	gets(ch);
+
+	 if(strstr(ch,"exit"))
+		 break;
+	 fputs(ch,fp);
+   }
+
+
+}
+
+void display()
+{
+   FILE *fp;
+   char *ch=" ",*na;
+
+   fp=fopen("record.txt","r");
+   printf("Enter Your Name\n");
+
+   while(!eof(fp))
+   {
+	  gets(na);
+
+	  fgets(ch,strlen(ch)+1,fp);
+	  if(strstr(ch,na))
+	  {
+		printf("*********** WELCOME ***********");
+		printf("MR. %s ***********\n",ch);
+		na=NULL;
+		break;
+	  }
+   }
+
+   if(na==NULL)
+   {
+	printf("*********** SORRY ***********");
+	printf("MR. %s ***********\n",ch);
+
+
+   }
+}

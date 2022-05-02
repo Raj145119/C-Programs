@@ -1,0 +1,67 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int unit;
+	float charge,charge1,charge2,charge3,charge4,total;
+	clrscr();
+	printf("enter the unit");
+	scanf("%d",&unit);
+	if(unit>0)
+	{
+	if(unit<=300)
+	{
+		if(unit>=100)
+		charge=100*2.80;
+		else
+		charge=unit*2.80;
+	}
+	printf("\ncharge=%f",charge);
+	}
+	if(unit>100)
+	{
+		if(unit>=200)
+		charge1=100*3.10;
+		else
+		{
+		charge1=(unit-100)*3.10;
+		}
+	printf("\ncharge1=%f",charge1);
+	}
+	if(unit>200)
+	{
+		if(unit>=300)
+		charge2=100*4.20;
+		else
+		{
+		charge2=(unit-200)*4.20;
+		}
+	  printf("\ncharge2=%f",charge2);
+	}
+	if(unit>300)
+	{
+		if(unit>=400)
+		charge3=100*5.00;
+		else
+		{
+		charge3=(unit-300)*5.00;
+		}
+	    printf("\ncharge3=%f",charge3);
+	 }
+	 if(unit>400)
+	 {
+		if(unit>=1000)
+		charge4=600*5.20;
+		else
+		{
+		charge4=(unit-400)*5.20;
+		}
+	     printf("\ncharge4=%f",charge4);
+	 }
+
+	total=charge+charge1+charge2+charge3+charge4;
+	printf("\ntotal=%f",total);
+	getch();
+
+
+}

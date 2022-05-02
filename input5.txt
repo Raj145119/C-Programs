@@ -1,0 +1,163 @@
+5 9
+1 2 10
+1 5 5
+2 3 1
+2 5 2
+3 4 4
+4 3 6
+5 2 3
+5 3 9
+5 4 2int adj[VERTEX][EDGE]={0}, w[VERTEX][EDGE]={0};
+	int a[VERTEX],heapsize;
+
+	struct graph{
+		int d;
+		int par;
+		//int flag;
+		int hi;
+	};
+	struct graph g[VERTEX];
+
+	void min_heapify (int i,int heapsize)
+{
+	int left  = 2*i;
+	int right = 2*i+1;
+	int smallest,tmp;
+	if(left <= heapsize && g[a[left]].d< g[a[i]].d )
+    	smallest = left;
+	else
+    	smallest = i;
+	if(right <= heapsize && g[a[right]].d <g[a[smallest]].d )
+    	smallest = right;
+	if(smallest != i)
+	{
+    	tmp=a[i];
+    	a[i]=a[smallest];
+    	a[smallest]=tmp;
+
+    	g[a[smallest]].hi=smallest;
+    	g[a[i]].hi=i;
+    	min_heapify (smallest,heapsize);
+	}
+}
+	void bulid_minheap(int heapsize)
+{
+	int i,s;
+	s=heapsize;
+	for(i=s/2;i>=1;i--)
+	min_heapify(i,heapsize);
+
+}
+
+int extract_min ()
+{
+    if(heapsize == 0)
+    {
+      printf("\nCan't remove element since queue is empty");
+        return 0;
+    }
+
+    int min = a[1];
+    a[1] = a[heapsize];
+    heapsize = heapsize -1;
+    min_heapify(1,heapsize);
+    return min;
+}
+ void decrease_key(int v, int u)
+{
+	int temp;
+	g[v].d= g[u].d+ w[u][v];
+	g[v].par=u;
+    
+	while(v>1 && g[a[v]].d<g[a[v/2]].d)
+	{
+		temp=a[v];
+		a[v]=a[v/2];
+		a[v/2]=temp;
+
+		g[v].hi=v;
+		g[v/2].hi=v/2;
+
+		v=v/2;
+	}
+}
+ void initialize()
+ {
+ 	int i;
+ 	for(i=2;i<=V;i++)
+ 	{
+ 		g[i].par=-1;
+ 		g[i].d=10000;
+ 		
+	 }
+	 g[1].d=0;
+	 g[1].par-1;
+ }
+   
+ void relax(int u, int v)
+ {
+ 	if(g[v].d>g[u].d+w[u][v])
+ 	{
+ 		decrease_key(v,u);
+	}
+ }
+
+ void dijkstra(int r)
+ {
+ 	int i,u,j=1;
+ 	initialize();
+ 	int s[V]={0};
+ 	for(i=1;i<=V;i++)
+ 	{
+ 		a[i]=i;
+ 		g[i].hi=i;
+ 		//g[i].flag=0;
+	 }
+	 heapsize=V;
+	 bulid_minheap(heapsize);
+	 while(heapsize)
+	 {
+	 	u=extract_min();
+	 	printf("\tu=%d",u);
+	 	//g[u].flag=1;
+	 	s[j++]=u;
+	 	for(i=1;i<=V;i++)
+	   {
+	       if(adj[u][i]==1)
+            {
+                relax(u,i);
+            }
+        }
+    }
+ }
+
+int main()
+{
+   int i,j,v1, v2,x;
+	FILE *fp;
+	fp=fopen("input5.txt","r");
+	if(fp==NULL)
+	{
+		printf("\n error occuring at opening of file");
+		return 0;
+	}
+	fscanf(fp,"%d %d", &V,&E);
+	printf("\n v=%d and e=%d",V,E);
+	for(i=1;i<=V;i++)
+	{
+		fscanf(fp,"%d %d %d",&v1,&v2,&x);
+	    printf("\n v1=%d and v2=%d",v1,v2);
+		adj[v1][v2]=1;
+		w[v1][v2]=x;
+		
+	}
+	dijkstra(1);
+	printf("\n \n");
+	for(i=1;i<=V;i++)
+	{
+		printf("\n i=%d   distance=%d  parent =%d  ", i, g[i].d, g[i].par);
+	}
+	fclose(fp);
+	return 0;
+}
+

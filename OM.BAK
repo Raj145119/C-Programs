@@ -1,0 +1,13 @@
+#include <iostream.h>
+#include <conio.h>
+class counter
+{
+	int
+};
+void main()
+{
+	clrscr();
+	cout<<"\nC++ may aapka SWAGAT hae...";
+
+	getch();
+}

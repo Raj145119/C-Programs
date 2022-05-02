@@ -1,0 +1,16 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int i=0;
+	char str[100];
+	clrscr();
+	printf("ENTER THE STRING\n");
+	gets(str);
+	if(str[i]>='A' && str[i]<='Z')
+	printf("CAPITAL STRING\n");
+	else
+	{printf("small string\n");}
+       //	i++;
+	getch();
+}

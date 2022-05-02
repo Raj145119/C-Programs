@@ -1,0 +1,49 @@
+#include<iostream.h>
+#include<conio.h>
+#include<string.h>
+class A
+{
+
+	public:
+	char *name;
+	void str()
+	{
+		name="R";
+		cout<<"Enter 1st the sting\n";
+		cin>>name;
+		//cout<<" "<<name<<endl;
+	}
+};
+class B
+{
+	public:
+	char *name1;
+	void get()
+	{
+		cout<<"Enter 2nd the string\n";
+		cin>>name1;
+
+		//cout<<name1<<endl;
+
+	}
+
+};
+class C:public A,public B
+{
+	public:
+	void concate()
+	{
+		strcat(name,name1);
+		cout<<name;
+	}
+
+};
+void main()
+{
+	clrscr();
+	C c;
+	c.str();
+	c.get();
+	c.concate();
+	getch();
+}

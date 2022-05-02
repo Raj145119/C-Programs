@@ -1,0 +1,22 @@
+ID	  NAME	    	DISTRICT	  COURCE	  DOB
+1         aditya         muz              bca             17-03-97
+2	  manoj		 sheohar 	  bsc it 	  23-8-90   
+3	  praveen 	 patna	  	  bca 	  	  12-3-97   
+4	  umesh 	 muz	  	  bca 	          12-4-96   
+5	  mukesh   	 delhi   	  ba    	  12-7-90   
+6	  chandan   	 sitamarhi   	  10th    	  12-4-99   
+8	  omprakash   	 patna   	  ssc    	  12-8-98   
+9	  mantosh   	 muz   	          bca    	  12-8-97   
+10	  sohan   	 motihari   	  isc    	  12-5-96   
+11	  sujit   	 baisali   	  it    	  12-6-94   
+12	  gautam   	 muzaffarpur   	  bca    	  14-4-90   
+13	  sanjit   	 patna   	  poltechnic 	  4-8-96   
+14	  prem   	 muz   	          bsc    	  4-9-96   
+15	  sanjiv   	 rajstan   	  b.tech    	  5-4-92   
+17	  rajiv   	 delhi   	  mba    	  23-5-89   
+19	  basant   	  muz   	  bca    	  28-12-98   
+20	  basant   	  muz   	  bca    	  28-12-98   
+12	  umesh   	 amba   	  bca    	  20 02 1996   
+136	  aditya   	 raipur   	  mca    	  901234   
+12	  adsd   	 akjsdh   	  mca    	  3746   
+1	  asf   	 ghjk   	  mca    	  23/4/12   

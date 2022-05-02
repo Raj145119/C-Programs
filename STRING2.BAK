@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+      int i=0,j=0;
+	char st[5],a[10],s[19];
+	clrscr();
+	printf("\n enter the char");
+	scanf("%s%s",&st,&a);
+     //  s[19]=a[10];
+     while(st[j]!=0)
+     {
+       s[i]=st[j];
+       i++;
+       j++;
+      }
+      //	st==a;
+       //	while(st[i]!=0)
+      //	{
+      //	i++;
+      //	}
+      //	printf("%d",i);
+       printf("%s",s[ix]);
+
+     //	printf("%s",a);
+	getch();
+}

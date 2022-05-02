@@ -1,0 +1,60 @@
+#include<iostream.h>
+#include<conio.h>
+class A
+{
+
+	public:
+	char name[10],add[10];
+	int id,a,d[5],i;
+};
+class B:public A
+{
+	public:
+	void getdata();
+
+};
+void B::getdata()
+{
+	cout<<"Enter the five record\n";
+		for(i=1;i<3;i++)
+		{
+			cout<<"Enter the ID\n";
+			cin>>id;
+			d[i]=id;
+			cout<<"Enter the name\n";
+			cin>>name;
+			cout<<"Enter the address\n";
+			cin>>add;
+		}
+
+}
+class C:public B
+{
+	public:
+	void display();
+
+};
+void C::display()
+{
+	clrscr();
+	cout<<"Enter the ID for record display";
+	cin>>a;
+		for(i=1;i<3;i++)
+		{
+			if(d[i]==a)
+			{
+				cout<<"ID="<<id<<endl;
+				cout<<"Name="<<name<<endl;
+				cout<<"Address="<<add<<endl;
+			}
+		}
+		//cout<<" NO MATCH THE ID FROM RECORD\n";
+}
+void main()
+{
+	clrscr();
+	C c;
+	c.getdata();
+	c.display();
+	getch();
+}

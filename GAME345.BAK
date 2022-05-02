@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+void main()
+{
+	int i,gm,gd,x=10,y=10,ch;
+	clrscr();
+
+	gm=gd=DETECT;
+	initgraph(&gm,&gd," ");
+	for(i=0;i<60;i++)
+	{
+	putpixel(x,y,WHITE);
+	x++;
+	}
+	ch=getch();
+	switch(ch)
+	{
+		case
+	}
+       //	closegraph();
+	getch();
+	closegraph();
+}

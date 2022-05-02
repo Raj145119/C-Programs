@@ -1,0 +1,18 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int i,n,fact=1;
+	clrscr();
+	printf("enter the number:");
+	scanf("%d",&i);
+	if(i==0)
+	fact=1; //printf("fact is 1");
+	else
+	{
+	for(n=1;n<=i;n++)
+	fact=fact*n;
+	}
+	printf("\n factorial of %d=%d",i,fact);
+	getch();
+}

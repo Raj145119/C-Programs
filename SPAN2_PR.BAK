@@ -1,0 +1,185 @@
+		/*program of prims alorithm*/
+#include<stdio.h>
+#include<conio.h>
+
+int heapsize=0,n,v,a[10];
+int adj[10][10];
+int w[10][10];
+void decrease_key(int,int);
+void build_min_heap(int);
+void heapify(int);
+void prims(int);
+int extract_min();
+
+struct prims
+{
+	int key;
+	int par;
+	int flag;
+	int hi;
+};
+struct prims g[10];
+
+
+void main()
+{
+	int i,j,v1,e,e1,w1;
+	FILE *fp;
+	clrscr();
+//***********************************************//
+	fp=fopen("graph.txt","r");
+	fscanf(fp,"%d%d",&v,&e);
+	//printf("%d %d",v,e);
+	//printf("%d %d",v,e);
+	for(i=1;i<=v;i++)
+	{
+		for(j=1;j<=v;j++)
+		{
+			adj[i][j]=0;
+			w[i][j]=0;
+		}
+		a[i]=i;
+	}
+
+	n=heapsize=v;
+
+	for(i=1;i<=e;i++)
+	{
+		fscanf(fp,"%d %d %d",&v1,&e1,&w1);
+		adj[v1][e1]=1;
+		adj[e1][v1]=1;
+		w[v1][e1]=w1;
+		w[e1][v1]=w1;
+	}
+
+	prims(1);
+
+	printf("\n select shortest weight path \n");
+	for(i=1;i<=n;i++)
+	{
+		printf("%d ",g[i].key);
+	}
+
+	printf("\n***** parent of verrtex *******\n");
+
+	for(i=1;i<=n;i++)
+	{
+		printf("%d ",g[i].par);
+	}
+
+	fclose(fp);
+	getch();
+
+}
+void heapify(int i)
+{
+
+	int left;
+	int right;
+	int smallest;
+	int temp;
+	left=2*i;
+	right=2*i+1;
+	if(left<=heapsize && g[a[left]].key<g[a[i]].key)
+		smallest=left;
+	else
+		smallest=i;
+	if(right<=heapsize && g[a[right]].key<g[a[smallest]].key)
+		smallest=right;
+	if(smallest!=i)
+	{
+		 temp=a[i];
+		 a[i]=a[smallest];
+		 a[smallest]=temp;
+
+		 g[a[smallest]].hi=smallest;
+		 g[a[i]].hi=i;
+
+		 heapify(smallest);
+	}
+}
+
+void build_min_heap(int n)
+{
+	 int i,temp;
+	 heapsize=n;
+	 for(i=(n/2);i>=1;i--)
+	  heapify(i);
+}
+
+
+
+int extract_min()
+{
+	int min,i=1;
+	if(heapsize<1)
+		printf("under flow");
+	 else
+	 {
+		min=a[i];
+		a[1]=a[heapsize];
+		heapsize=heapsize-1;
+		heapify(1);
+	 }
+	 return min;
+}
+
+void decrease_key(int i, int w)
+{
+	int temp;
+	if(w>g[a[i]].key)
+	{
+		printf("not possible");
+	}
+	else
+	{
+		g[a[i]].key=w;
+	}
+
+	while(i>1 && g[a[i]].key<g[a[i/2]].key)
+	{
+		temp=a[i];
+		a[i]=a[i/2];
+		a[i/2]=temp;
+
+		g[a[i]].hi=i;      //new heap index
+		g[a[i/2]].hi=i/2;  //new heap index
+
+		i=i/2;
+	}
+}
+
+void prims(int r)
+{
+	int i,j,u,w1,temp;
+
+	for(i=1;i<=n;i++)
+	{
+		g[i].key=1000;
+		g[i].par=-1;
+		g[i].flag=0;
+		g[i].hi=i;
+	}
+	g[r].key=0;
+	build_min_heap(n);
+	while(heapsize>=1)
+	{
+		u=extract_min();
+		g[u].flag=1;
+
+		for(i=1;i<=v;i++)
+		{
+			if(adj[u][i]==1)
+			{
+				w1=w[u][i];
+				if(g[i].flag==0 && w1<g[i].key )
+				{
+					g[i].par=u;
+					decrease_key(g[i].hi,w1);
+				}
+			}
+
+		}
+
+	}
+}

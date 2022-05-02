@@ -1,0 +1,166 @@
+		/*program of dijkstra alorithm*/
+#include<stdio.h>
+#include<conio.h>
+
+int heapsize=0,n,v,a[10];
+int adj[10][10];
+int w[10][10];
+void relax(int,int,int);
+void initialize_single_source(int);
+void build_min_heap(int);
+void heapify(int);
+void dikstra(int);
+int extract_min();
+
+struct prims
+{
+	int d;
+	int par;
+	int flag;
+};
+struct prims g[10];
+
+
+void main()
+{
+	int i,j,v1,e,e1,w1;
+	FILE *fp;
+	clrscr();
+//***********************************************//
+	fp=fopen("dijs.txt","r");
+	fscanf(fp,"%d%d",&v,&e);
+	for(i=1;i<=v;i++)
+	{
+		for(j=1;j<=v;j++)
+		{
+			adj[i][j]=0;
+			w[i][j]=0;
+		}
+		a[i]=i;
+	}
+
+	n=heapsize=v;
+
+	for(i=1;i<=e;i++)
+	{
+		fscanf(fp,"%d %d %d",&v1,&e1,&w1);
+		adj[v1][e1]=1;
+		w[v1][e1]=w1;
+	}
+
+	dikstra(1);
+
+     /*	printf("\n select shortest weight path \n");
+	for(i=1;i<=n;i++)
+	{
+		printf("%d ",g[i].d);
+	}
+
+	printf("\n***** parent of verrtex *******\n");
+
+	for(i=1;i<=n;i++)
+	{
+		printf("%d ",g[i].par);
+	}
+	 */
+	fclose(fp);
+	getch();
+
+}
+void heapify(int i)
+{
+
+	int left;
+	int right;
+	int smallest;
+	int temp;
+	left=2*i;
+	right=2*i+1;
+	if(left<=heapsize && g[a[left]].d<g[a[i]].d)
+		smallest=left;
+	else
+		smallest=i;
+	if(right<=heapsize && g[a[right]].d<g[a[smallest]].d)
+		smallest=right;
+	if(smallest!=i)
+	{
+		 temp=a[i];
+		 a[i]=a[smallest];
+		 a[smallest]=temp;
+
+		 heapify(smallest);
+	}
+}
+
+void build_min_heap(int n)
+{
+	 int i,temp;
+	 heapsize=n;
+	 for(i=(n/2);i>=1;i--)
+	  heapify(i);
+}
+
+
+
+int extract_min()
+{
+	int min,i=1;
+	if(heapsize<1)
+		printf("under flow");
+	 else
+	 {
+		min=a[i];
+		a[1]=a[heapsize];
+		heapsize=heapsize-1;
+		heapify(1);
+	 }
+	 //printf("%d",min);
+	 return min;
+}
+void initialize_single_source(int s)
+{
+    int i;
+    for(i=1;i<=v;i++)
+    {
+	g[i].d=999;
+	g[i].par=-1;
+	g[i].flag=0;
+    }
+    g[s].d=0;
+}
+void relax(int u,int i,int w)
+{
+    if(g[i].d>(g[u].d+w))
+    {
+	g[i].d=g[u].d+w;
+	g[i].par=u;
+    }
+ //   printf("%d\n",g[i].d);
+}
+void dikstra(int s)
+{
+	int i,j,u,w1,temp;
+
+	initialize_single_source(s);
+	g[s].par=-1;
+	build_min_heap(n);
+	while(heapsize>=1)
+	{
+		u=extract_min();
+		g[u].flag=1;
+		printf("%d  ",u);
+		for(i=1;i<=v;i++)
+		{
+			if(adj[u][i]==1)
+			{
+			       //	if(g[i].flag==0 && w[u][i]<g[i].d)
+			      //	{
+				 //	g[i].par=u;
+					relax(u,i,w[u][i]);
+			       //	}
+			}
+
+		}
+
+	}
+}

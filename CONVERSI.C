@@ -1,0 +1,129 @@
+#include<stdio.h>
+#include<conio.h>
+#include<math.h>
+void main()
+{
+
+	int x,y,i=0,s=0,n;
+	char arr[6];
+	int j,b,c=0,p=0;
+	clrscr();
+	printf("\t .....CONVERSION......\n");
+	printf("Enter 1: for Decimal to binary\n");
+	printf("Enter 2: for Decimal to octal\n");
+	printf("Enter 3: for Decimal to Hexadecimal\n");
+	printf("Enter 4: for Binary to Decimal\n");
+	printf("Enter 5: for octal to Decimal\n");
+	printf("Enter 6: for Hexadecimal to Decimal\n");
+	scanf("%d",&n);
+	switch(n)
+	{
+		case 1:
+			printf("Enter the Decimal values\n");
+			scanf("%d",&x);
+			while(x!=0)
+			{
+				y=x%2;
+				s=s+y*pow(10,i);
+				x=x/2;
+				i++;
+
+			}
+			printf("\nBinary no.=%d",s);
+		break;
+		case 2:
+			printf("Enter the Decimal no.\n");
+			scanf("%d",&x);
+			while(x!=0)
+			{
+				y=x%10;
+				s=s+y*pow(8,i);
+				x=x/10;
+				i++;
+			}
+			printf("\nOctal no.=%d",s);
+		break;
+		case 3:
+			printf("Enter the Decimal no.\n");
+			scanf("%d",&x);
+			while(x!=0)
+			{
+				y=x%10;
+				s=s+y*pow(16,i);
+				x=x/10;
+				i++;
+			}
+			printf("\nHexadecimal no.=%d",s);
+		break;
+		case 4:
+			printf("Enter the Binary values\n");
+			scanf("%d",&x);
+			while(x!=0)
+			{
+				y=x%10;
+				s=s+y*pow(2,i);
+				x=x/10;
+				i++;
+			}
+			printf("\nDecimal no.=%d",s);
+		break;
+		case 5:
+			printf("Enter the octal values\n");
+			scanf("%d",&x);
+			while(x!=0)
+			{
+				y=x%10;
+				s=s+y*pow(8,i);
+				x=x/10;
+				i++;
+			}
+			printf("%d",s);
+		break;
+		case 6:
+			printf("Enter the 4 hexadecimal n0.\n");
+			for(i=0;i<4;i++)
+			{
+				fflush(stdin);
+				scanf("%c",&arr[i]);
+			}
+			arr[4] = '\0';
+			printf("Entered Character is  %s\n",arr);
+
+			for(j=0;j<4;j++)
+			{
+				switch(arr[j])
+				{
+					case 'A':
+						b=10;
+					break;
+					case 'B':
+						b=11;
+					break;
+					case 'c':
+						b=12;
+					break;
+					case 'D':
+						b=13;
+					break;
+					case 'E':
+						b=14;
+					break;
+					case 'f':
+						b=15;
+					break;
+					default:
+					b=(int)(arr[j]-48);
+				}
+				c=c+b*pow(16,p);
+				printf("%d ",c);
+				p++;
+			}
+
+			break;
+		default:
+		printf("Wrong choice\n");
+
+	}
+
+	getch();
+}

@@ -1,0 +1,63 @@
+#include<conio.h>
+#include<stdio.h>
+#include<graphics.h>
+#include<dos.h>
+void draw()
+{
+	int gd,gm,x=20,y=20,i;
+	gm=gd=DETECT;
+	initgraph(&gm,&gd," ");
+	do
+	{
+		clrscr();
+		setcolor(RED);
+		outtextxy(x,y,"P");
+		delay(500);
+		x+=20;
+		outtextxy(x,y,"R");
+		delay(500);
+		x+=20;
+		outtextxy(x,y,"A");
+		delay(500);
+		x+=20;
+		outtextxy(x,y,"V");
+		delay(500);
+		x+=20;
+		outtextxy(x,y,"E");
+		delay(500);
+		x+=20;
+		outtextxy(x,y,"E");
+		delay(500);
+		x+=20;
+		outtextxy(x,y,"N");
+		delay(500);
+		setcolor(7);
+		outtextxy(x,y,"N");
+		delay(500);
+		x-=20;
+		outtextxy(x,y,"E");
+		delay(500);
+		x-=20;
+		outtextxy(x,y,"E");
+		delay(500);
+		x-=20;
+		outtextxy(x,y,"V");
+		delay(500);
+		x-=20;
+		outtextxy(x,y,"A");
+		delay(500);
+		x-=20;
+		outtextxy(x,y,"R");
+		delay(500);
+		x-=20;
+		outtextxy(x,y,"P");
+		delay(500);
+	}while(!kbhit());
+	getch();
+	closegraph();
+}
+void main()
+{
+	clrscr();
+	draw();
+}

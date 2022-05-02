@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+void main()
+{
+	int i;
+	char ch='a';
+	FILE *fp;
+	clrscr();
+	fp=fopen("html12.txt","a");
+	if(fp==NULL)
+	{
+		printf("NOT FILE CREATE\n");
+		exit(0);
+	}
+	printf("PRESS 0 FOR STOP WRITE\n");
+	while(ch!='0')
+	{
+		ch=getchar();
+		fprintf(fp,"%c",ch);
+	}
+	/*while(!feof(fp))
+	{
+		fscanf(fp,"%c",&ch);
+		printf("%c",ch);
+	}*/
+	fclose(fp);
+	getch();
+}

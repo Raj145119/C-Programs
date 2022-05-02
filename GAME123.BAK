@@ -1,0 +1,215 @@
+#include<graphics.h>
+#include<process.h>
+#include<dos.h>
+///#include<conio.h >
+#include<alloc.h>
+#include<stdio.h>
+int i =20 , j = 150 , cun = 70 , scr = 0 , k = 0 , tmp = 0, a = 300 , b = 300;
+int x = 1 , y = 0 , res = 100 , e=0,E=0;
+typedef struct dnode
+{
+	int x,y;
+	struct dnode *next;
+} node;
+node *h = NULL;
+int menu();
+void menu_l(int );
+void help(int);
+int m_test(int , int);
+int drow();
+void scr_menu(int);
+void cir_d();
+int drow_s( );
+void test();
+int key_b( int );
+int drow()
+{
+	int ch;
+	node * temp,*ptr;
+	//E=0;
+	setcolor(14);
+	line(i,j,i,j);
+	ptr=(node *)malloc(sizeof(node));
+	ptr->x=i;
+	ptr-> y = j ;
+	ptr-> next = NULL;
+	if(h == NULL)
+	{
+		h = ptr;
+	}
+	else
+	{
+		temp = h;
+		while(temp->next != NULL)
+		{
+			temp = temp->next;
+		}
+		temp->next = ptr;
+	}
+	setcolor(4);
+	temp = h;
+	while(temp->next != NULL)
+	{
+		if( temp-> x == ptr->x && temp->y == ptr->y)
+		{
+			setcolor(4);
+			outtextxy(250,190,"GAME OVER");
+			scr_menu(0);
+			setcolor(15);
+			outtextxy(480 ,380,"Press x to Exit");
+			getch();
+			while(1)
+			{
+				if (kbhit())
+				{
+					ch=getch();
+					if(ch==120)
+					{
+						E =1;
+						//return E; //break; // exit(1);
+					}
+				}
+				delay(10);
+			}
+		}
+		temp = temp-> next;
+	}
+	cir_d();
+	scr = scr + tmp;
+	if( k >= (70 + scr ) )
+	{
+		temp=h;
+		setcolor (0);
+		line(temp->x ,temp->y,temp->x,temp->y);
+		h=temp->next;
+		free(temp);
+	}
+	return E;
+}
+//
+void scr_menu(int c)
+{
+	setcolor(c);
+	outtextxy(400,420,"Press x to Exit");
+	outtextxy(120,420,"Press P to Pause ");
+	outtextxy(120,420,"Press C to Continu" );
+}
+//
+void cir_d()
+{
+	circle(a,b,1);
+	circle(a,b,2);
+	circle(a,b,3);
+	if( ( (i+3) == a || (a+3) == i) && ( ( (b+3) - j) <= 6 && ((b+3)-j) >= 1 ) )
+	{
+		setcolor(0);
+		circle(a,b,1) ;
+		circle(a,b,2);
+		circle(a,b,3);
+		tmp=2;
+	}
+	else if( ( j+3 ==b || b+3 == j ) && (a+3) - i <= 6 && (a+3) - i >= 1 )
+	{
+		setcolor(0);
+		circle(a,b,1) ;
+		circle(a,b,2);
+		circle(a,b,3);
+		tmp=2;
+	}
+	else
+	{
+		tmp=0;
+	}
+}
+//
+int drow_s()
+{
+	int ch;
+	if(drow())
+	{
+		E=1;
+		return E;
+	}
+	if (kbhit())
+	{
+		ch=getch();
+		if(!key_b( ch ))
+		{
+			E=1;
+			return E;
+		}
+	}
+	if(tmp==2)
+	{
+		a += 109;
+		b += 70;
+		if( a>=getmaxx()-25 || a<=25)
+		{
+			a=29;
+		}
+		if( b>=395 || b<=25)
+		{
+			b=39;
+		}
+		k=cun++;
+	}
+	i=i+x;
+	j=j+y;
+	test();
+	return 0;
+}
+//
+void test()
+{
+	if (i >=getmaxx()-20 )
+	{
+		i= 20;
+	}
+	else if(i < 20 )
+	{
+		i=getmaxx()-20;
+	}
+	if (j >= 400)
+	{
+		j=20;
+	}
+	else if(j < 20)
+	{
+		j=400;
+	}
+}
+//
+int key_b( int ch)
+{
+	E =1;
+	if(ch==72 && res!=80)
+	{
+		x=0;
+		y=-1 ;
+		res=72;
+	}
+	if(ch==75 && res!= 77)
+	{
+		x=-1;
+		y=0;
+		res=75;
+	}
+	if(ch== 77 && res!=75)
+	{
+		x=1;
+		y=0;
+		res=77;
+	}
+	if(ch==80 && res != 72)
+	{
+		x=0;
+		y=1;
+		res=80;
+	}
+	if(ch==120 )
+	{
+		E=0;
+		//return E; // exit(0);
+	}
+	return E;
+}

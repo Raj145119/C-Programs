@@ -1,0 +1,35 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int i ,n,j;
+      //	float sum=0;
+	clrscr();
+	printf("Enter the no.");
+	scanf("%d",&n);
+   //	sum=x;
+    //	f=x;
+       /*	for(i=1;i<=n;i++)
+	{
+	    s= f*x*x;
+	    fact=fact*j*(j+1);
+	    sum=sum+float(s/fact);
+	    j=j++;
+	    printf("%d",sum);
+
+
+	} */
+	j=3;
+	printf("x-");
+	for(i=1;i<=n;i++)
+	{
+		printf("x^%d/%d!",j,j);
+		if(i%2==0)
+		printf("-");
+		else
+		printf("+");
+		j=j+2;
+	}
+	printf(".........");
+	getch();
+}

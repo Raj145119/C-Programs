@@ -1,0 +1,61 @@
+#include<stdio.h>
+#include<conio.h>
+#include<math.h>
+void multiply(int [5][5],int [5][5],int [5][5],int,int,int,int);
+void readdata(int [5][5],int,int);
+void display(int [5][5],int,int);
+void main()
+{
+	int a[5][5],b[5][5],c[5][5],m1,m2,n1,n2;
+	clrscr();
+	printf("Enter the 1st array\n");
+	readdata(a,m1,n1);
+	printf("Enter the 2nd array\n");
+	readdata(b,m2,n2);
+	printf("%d %d %d %d ",m1,n1,m2,n2);
+	multiply(a,b,c,m1,n1,m2,n2);
+
+	/*
+	printf("Multiplication of 2 matrix\n");*/
+
+	     /*	printf("Multiplication of two matrix\n");
+		for(i=0;i<3;i++)
+		{
+			for(j=0;j<3;j++)
+			printf("%d ",c[i][j]);
+			printf("\n");
+		}  */
+		getch();
+}
+void readdata(int a[5][5],int r1,int c1)
+{
+int i,j;
+	printf("Enter the no. of row\n");
+	scanf("%d",&r1);
+	printf("Enter the no. of column\n");
+	scanf("%d",&c1);
+	for(i=0;i<r1;i++)
+		for(j=0;j<c1;j++)
+		  scanf("%d",&a[i][j]);
+
+}
+void multiply(int a[5][5],int b[5][5],int c[5][5],int m1,int n1,int m2,int n2)
+{
+	int i,j,k;
+	for(i=0;i<n1;i++)
+		for(j=0;j<m1;j++)
+		{
+			c[i][j]=0;
+			for(k=0;k<m2;k++)
+			c[i][j]=c[i][j]+a[i][k]*b[k][j];
+		}
+}
+void display(int a[5][5],int m1,int n1)
+{
+	int i,j;
+	printf("Multiplication of two matrix\n");
+	for(i=0;i<m1;i++)
+		for(j=0;j<n1;j++)
+		  printf("%d",&a[i][j]);
+		  printf("\n");
+}
